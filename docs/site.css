@@ -264,6 +264,11 @@ main {
     background: var(--accent-hover);
 }
 
+.star-link {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 6px;
+}
 
 .star-link:hover {
     opacity: 0.9;
@@ -273,4 +278,222 @@ main {
     display: block;
     height: 28px;
     width: auto;
+}
+
+.pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pill-row li {
+    padding: 3px 10px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--panel);
+}
+
+.hero-shot {
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+}
+
+.hero-shot img,
+.shots img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.section {
+    margin-top: clamp(48px, 7vw, 84px);
+}
+
+.section h2 {
+    margin: 0 0 8px;
+    font-size: clamp(22px, 2.6vw, 30px);
+    font-weight: 720;
+    letter-spacing: -0.03em;
+}
+
+.section-lede {
+    margin: 0 0 16px;
+    color: var(--muted);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.card {
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--panel);
+}
+
+.card h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    font-weight: 660;
+}
+
+.card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.shots figure {
+    margin: 0;
+}
+
+.shots img {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+}
+
+.shots figcaption {
+    margin-top: 8px;
+    color: var(--subtle);
+    font-size: 13px;
+}
+
+pre {
+    overflow-x: auto;
+    margin: 16px 0;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel);
+    box-shadow: var(--shadow);
+}
+
+pre code {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    margin-top: 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+th,
+td {
+    padding: 11px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+}
+
+th {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: var(--panel-muted);
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+.site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: min(1120px, 100% - 40px);
+    margin: 0 auto;
+    padding: 24px 0 40px;
+    color: var(--subtle);
+    font-size: 13px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.site-footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.footer-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.visit-badge {
+    display: block;
+    height: 20px;
+    width: auto;
+}
+
+@media (max-width: 860px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-shot {
+        order: -1;
+    }
+
+    .site-nav {
+        gap: 4px 14px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 560px) {
+    .site-nav a:nth-child(1),
+    .site-nav a:nth-child(2) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
 }
