@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Models.dev Providers for Copilot Desktop</title>
+<meta name="description" content="A canvas extension that connects models.dev to Copilot Desktop's Other Providers registry.">
+<link rel="icon" href="screenshots/overview-dark.png" type="image/png">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>
+                <circle cx="12" cy="12" r="3.4"/>
+            </svg>
+        </span>
+        <span>Models.dev Providers</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+        <a href="#features">Features</a>
+        <a href="#screenshots">Screenshots</a>
+        <a href="#install">Install</a>
+        <a href="https://github.com/wosledon/copilot-desktop-models">GitHub</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-copy">
+            <p class="eyebrow">Copilot Desktop canvas</p>
+            <h1>Bring <span class="accent">any model</span> to Copilot.</h1>
+            <p class="lede">
+                Browse <a href="https://models.dev">models.dev</a>, pick a provider and its chat models,
+                and add them to Copilot Desktop's <strong>Other Providers</strong> with reasoning effort
+                levels and credentials in the OS credential store.
+            </p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="#install">Install</a>
+                <a class="btn" href="https://github.com/wosledon/copilot-desktop-models">View on GitHub</a>
+                <a class="btn btn-quiet" href="https://github.com/wosledon/copilot-desktop-models/blob/main/README.zh.md">中文说明</a>
+            </div>
+            <ul class="pill-row" aria-label="Highlights">
+                <li>Global across sessions</li>
+                <li>Reasoning effort</li>
+                <li>OS credential store</li>
+                <li>MIT</li>
+            </ul>
+        </div>
+        <figure class="hero-shot">
+            <img src="screenshots/overview-dark.png" alt="The Models.dev Providers canvas showing the overview screen" width="1440" height="980" loading="eager">
+        </figure>
+    </section>
+
+    <section id="features" class="section">
+        <h2>What it does</h2>
+        <div class="grid">
+            <article class="card">
+                <h3>Writes the real registry</h3>
+                <p>Providers and models go into <code>~/.copilot/data.db</code> (<code>model_providers</code>, <code>provider_models</code>), the same store the <em>Other Providers</em> settings use.</p>
+            </article>
+            <article class="card">
+                <h3>Works in every session</h3>
+                <p>Because the rows live in Copilot Desktop's own database, a new session sees the provider without editing any file or restarting the app.</p>
+            </article>
+            <article class="card">
+                <h3>Reasoning effort</h3>
+                <p>Levels are written to <code>supported_reasoning_efforts</code>, which is what makes Copilot's reasoning-effort control appear for a model.</p>
+            </article>
+            <article class="card">
+                <h3>Secrets stay secret</h3>
+                <p>API keys and bearer tokens go to the OS credential store under <code>byok:&lt;id&gt;:apiKey</code>. The canvas and the agent never receive them.</p>
+            </article>
+            <article class="card">
+                <h3>Catalog mapping</h3>
+                <p>Token limits, vision support, and reasoning options come from models.dev, together with model names and identities.</p>
+            </article>
+            <article class="card">
+                <h3>Edit and remove</h3>
+                <p>Existing app providers can be edited or deleted from the canvas, including their model list and effort levels.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="screenshots" class="section">
+        <h2>Screenshots</h2>
+        <div class="shots">
+            <figure>
+                <img src="screenshots/installed-dark.png" alt="Installed providers with an app provider selected" width="1440" height="980" loading="lazy">
+                <figcaption>Installed providers read directly from Copilot Desktop's registry.</figcaption>
+            </figure>
+            <figure>
+                <img src="screenshots/reasoning-effort-dark.png" alt="Advanced model mapping with reasoning effort levels" width="1440" height="980" loading="lazy">
+                <figcaption>Per-model reasoning-effort levels in Advanced model mapping.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="install" class="section">
+        <h2>Install</h2>
+        <p class="section-lede">Requirements: GitHub Copilot Desktop with canvas support, and network access to models.dev.</p>
+        <pre><code>git clone https://github.com/wosledon/copilot-desktop-models
+cd copilot-desktop-models
+npm run install:extension</code></pre>
+        <p>
+            The command copies the extension to <code>~/.copilot/extensions/models-dev-providers</code>
+            (<code>$COPILOT_HOME</code> when set). Start a new Copilot session, then open
+            <strong>Canvases → Models.dev Providers</strong>.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Where data lives</h2>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Data</th><th>Location</th></tr></thead>
+                <tbody>
+                    <tr><td>Providers and models</td><td><code>~/.copilot/data.db</code></td></tr>
+                    <tr><td>API key / bearer token</td><td>OS credential store: <code>byok:&lt;provider-id&gt;:apiKey</code></td></tr>
+                    <tr><td>models.dev cache</td><td><code>~/.copilot/plugin-data/models-dev-providers/catalog.json</code></td></tr>
+                    <tr><td>One-time backup</td><td><code>~/.copilot/plugin-data/models-dev-providers/backups/</code></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span>MIT licensed</span>
+    <nav aria-label="Footer">
+        <a href="https://github.com/wosledon/copilot-desktop-models/blob/main/README.md">README</a>
+        <a href="https://github.com/wosledon/copilot-desktop-models/blob/main/README.zh.md">中文 README</a>
+        <a href="https://github.com/wosledon/copilot-desktop-models/blob/main/LICENSE">License</a>
+        <a href="https://models.dev">models.dev</a>
+    </nav>
+</footer>
+</body>
+</html>

@@ -6,7 +6,7 @@
 
 浏览 models.dev 的开放模型目录，选择供应商和聊天模型，填写密钥，供应商会写入 Copilot Desktop 自己的供应商注册表（与 *Other Providers* 设置使用同一处）。之后**所有会话都能直接使用**，并带有推理强度。
 
-[English](README.md)
+[English](README.md) · [项目主页](https://wosledon.github.io/copilot-desktop-models/)
 
 ![Models.dev Providers 画布](docs/screenshots/overview-dark.png)
 

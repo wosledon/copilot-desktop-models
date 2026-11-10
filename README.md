@@ -6,7 +6,7 @@ A canvas extension that connects [models.dev](https://models.dev) to **Copilot D
 
 Browse the open model catalog, pick a provider and its chat models, enter a key, and the provider is written into Copilot Desktop's own provider registry under the same place the *Other Providers* settings use. It is then available to every session, with reasoning-effort levels.
 
-[中文说明](README.zh.md)
+[中文说明](README.zh.md) · [Website](https://wosledon.github.io/copilot-desktop-models/)
 
 ![Models.dev Providers canvas](docs/screenshots/overview-dark.png)
 
