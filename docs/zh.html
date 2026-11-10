@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Models.dev Providers for Copilot Desktop</title>
+<meta name="description" content="把 models.dev 接入 Copilot Desktop 的 Other Providers 的 Canvas 扩展。">
+<link rel="icon" href="screenshots/overview-dark.png" type="image/png">
+<link rel="alternate" hreflang="en" href="https://wosledon.github.io/copilot-desktop-models/">
+<link rel="alternate" hreflang="zh-CN" href="https://wosledon.github.io/copilot-desktop-models/zh.html">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>
+                <circle cx="12" cy="12" r="3.4"/>
+            </svg>
+        </span>
+        <span>Models.dev Providers</span>
+    </a>
+    <nav class="site-nav" aria-label="主导航">
+        <a href="#features">功能</a>
+        <a href="#screenshots">截图</a>
+        <a href="#install">安装</a>
+        <a href="https://github.com/wosledon/copilot-desktop-models">GitHub</a>
+        <a href="index.html" hreflang="en" lang="en">English</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-copy">
+            <p class="eyebrow">Copilot Desktop Canvas</p>
+            <h1>把<span class="accent">任意模型</span>接进 Copilot。</h1>
+            <p class="lede">
+                浏览 <a href="https://models.dev">models.dev</a>，选择供应商和聊天模型，直接加入
+                Copilot Desktop 的 <strong>Other Providers</strong>。推理强度会自动映射，密钥存入系统凭据管理器。
+            </p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="#install">安装</a>
+                <a class="btn" href="https://github.com/wosledon/copilot-desktop-models">查看 GitHub</a>
+                <a class="btn btn-quiet" href="https://github.com/wosledon/copilot-desktop-models/blob/main/README.zh.md">中文 README</a>
+            </div>
+            <ul class="pill-row" aria-label="亮点">
+                <li>跨会话可用</li>
+                <li>推理强度</li>
+                <li>系统凭据管理</li>
+                <li>MIT</li>
+            </ul>
+        </div>
+        <figure class="hero-shot">
+            <img src="screenshots/overview-dark.png" alt="Models.dev Providers 画布总览" width="1440" height="980" loading="eager">
+        </figure>
+    </section>
+
+    <section id="features" class="section">
+        <h2>它做什么</h2>
+        <div class="grid">
+            <article class="card">
+                <h3>写入真正的注册表</h3>
+                <p>供应商和模型写入 <code>~/.copilot/data.db</code> 的 <code>model_providers</code>、<code>provider_models</code>，与 <em>Other Providers</em> 设置使用同一处存储。</p>
+            </article>
+            <article class="card">
+                <h3>所有会话都能用</h3>
+                <p>数据在 Copilot Desktop 自己的数据库里，新会话立即能看到供应商，不需要改文件或重启应用。</p>
+            </article>
+            <article class="card">
+                <h3>推理强度</h3>
+                <p>等级写入 <code>supported_reasoning_efforts</code>，这正是 Copilot 显示推理强度选项所依赖的字段。</p>
+            </article>
+            <article class="card">
+                <h3>密钥不外泄</h3>
+                <p>API Key、Bearer Token 存入系统凭据管理器的 <code>byok:&lt;id&gt;:apiKey</code>，画布接口和 Agent 都拿不到明文。</p>
+            </article>
+            <article class="card">
+                <h3>目录映射</h3>
+                <p>Token 上限、视觉支持、推理选项都来自 models.dev，同时保留模型名称与身份。</p>
+            </article>
+            <article class="card">
+                <h3>可编辑、可删除</h3>
+                <p>已有的 App 供应商可以在画布中修改或删除，包括模型列表和推理强度。</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="screenshots" class="section">
+        <h2>截图</h2>
+        <div class="shots">
+            <figure>
+                <img src="screenshots/installed-dark.png" alt="已安装供应商与供应商详情" width="1440" height="980" loading="lazy">
+                <figcaption>已安装的供应商直接来自 Copilot Desktop 注册表。</figcaption>
+            </figure>
+            <figure>
+                <img src="screenshots/reasoning-effort-dark.png" alt="高级模型映射中的推理强度等级" width="1440" height="980" loading="lazy">
+                <figcaption>在 Advanced model mapping 中逐模型设置推理强度。</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section id="install" class="section">
+        <h2>安装</h2>
+        <p class="section-lede">需要支持 Canvas 的 GitHub Copilot Desktop，以及访问 models.dev 的网络。</p>
+        <pre><code>git clone https://github.com/wosledon/copilot-desktop-models
+cd copilot-desktop-models
+npm run install:extension</code></pre>
+        <p>
+            命令会把扩展复制到 <code>~/.copilot/extensions/models-dev-providers</code>
+            （设置了 <code>$COPILOT_HOME</code> 时使用该目录）。然后新建 Copilot 会话，打开
+            <strong>Canvases → Models.dev Providers</strong>。
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>数据存放位置</h2>
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>数据</th><th>位置</th></tr></thead>
+                <tbody>
+                    <tr><td>供应商与模型</td><td><code>~/.copilot/data.db</code></td></tr>
+                    <tr><td>API Key / Bearer Token</td><td>系统凭据管理器：<code>byok:&lt;provider-id&gt;:apiKey</code></td></tr>
+                    <tr><td>models.dev 缓存</td><td><code>~/.copilot/plugin-data/models-dev-providers/catalog.json</code></td></tr>
+                    <tr><td>一次性备份</td><td><code>~/.copilot/plugin-data/models-dev-providers/backups/</code></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span>MIT 许可</span>
+    <nav aria-label="页脚">
+        <a href="https://github.com/wosledon/copilot-desktop-models/blob/main/README.zh.md">中文 README</a>
+        <a href="https://github.com/wosledon/copilot-desktop-models/blob/main/README.md" hreflang="en" lang="en">English README</a>
+        <a href="https://github.com/wosledon/copilot-desktop-models/blob/main/LICENSE">许可证</a>
+        <a href="https://models.dev">models.dev</a>
+    </nav>
+</footer>
+</body>
+</html>
