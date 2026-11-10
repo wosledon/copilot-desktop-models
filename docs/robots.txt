@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wosledon.github.io/copilot-desktop-models/sitemap.xml
