@@ -116,8 +116,16 @@ code {
 .site-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px 18px;
+    align-items: center;
+    gap: 4px 18px;
     font-size: 14px;
+}
+
+.site-nav > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 0 1px;
 }
 
 .site-nav a {
@@ -132,18 +140,21 @@ code {
 .lang-switch {
     display: inline-flex;
     overflow: hidden;
-    align-self: center;
     border: 1px solid var(--border);
     border-radius: 9px;
     background: var(--panel);
 }
 
 .lang-switch a {
-    padding: 3px 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 28px;
+    padding: 0 11px;
     color: var(--muted);
     font-size: 13px;
     font-weight: 600;
-    line-height: 1.7;
+    line-height: 1;
     border-left: 1px solid var(--border);
 }
 
