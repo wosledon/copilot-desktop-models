@@ -129,6 +129,39 @@ code {
     text-decoration: none;
 }
 
+.lang-switch {
+    display: inline-flex;
+    overflow: hidden;
+    align-self: center;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--panel);
+}
+
+.lang-switch a {
+    padding: 3px 11px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.7;
+    border-left: 1px solid var(--border);
+}
+
+.lang-switch a:first-child {
+    border-left: 0;
+}
+
+.lang-switch a:hover {
+    color: var(--text);
+    background: var(--panel-muted);
+    text-decoration: none;
+}
+
+.lang-switch a[aria-current="page"] {
+    color: #fff;
+    background: var(--accent);
+}
+
 main {
     width: min(1120px, 100% - 40px);
     margin: 0 auto;
