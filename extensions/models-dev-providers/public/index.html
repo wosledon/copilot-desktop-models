@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Models.dev Providers</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>
+                        <circle cx="12" cy="12" r="3.4"/>
+                    </svg>
+                </span>
+                <div class="brand-copy">
+                    <h1>Provider Studio</h1>
+                    <p>models.dev <span aria-hidden="true">→</span> Copilot Desktop</p>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <button id="copy-path" class="path-button" type="button" title="Copy data.db path">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M14 3h5a2 2 0 0 1 2 2v5M10 21H5a2 2 0 0 1-2-2v-5M8 16 16 8M14 3H9a2 2 0 0 0-2 2v2M21 14v5a2 2 0 0 1-2 2h-5"/>
+                    </svg>
+                    <span id="storage-path">data.db</span>
+                </button>
+                <button id="refresh-button" class="button button-subtle" type="button">
+                    <span class="button-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 11a8.1 8.1 0 0 0-15.5-2M4 4v5h5M4 13a8.1 8.1 0 0 0 15.5 2M20 20v-5h-5"/>
+                        </svg>
+                    </span>
+                    <span>Refresh</span>
+                </button>
+            </div>
+        </header>
+
+        <div id="banner" class="banner" hidden></div>
+
+        <main class="workspace">
+            <aside class="sidebar" aria-label="Provider catalog">
+                <div class="sidebar-head">
+                    <div class="sidebar-title-row">
+                        <span class="sidebar-title">Providers</span>
+                        <span id="provider-total" class="count-pill">—</span>
+                    </div>
+                    <label class="search-field">
+                        <span class="search-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+                                <circle cx="11" cy="11" r="6.5"/>
+                                <path d="m16 16 4.2 4.2"/>
+                            </svg>
+                        </span>
+                        <input id="provider-search" type="search" placeholder="Search providers or models" aria-label="Search providers or models" autocomplete="off" spellcheck="false">
+                    </label>
+                    <div class="filter-tabs" role="group" aria-label="Filter providers">
+                        <button class="filter-tab is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                        <button class="filter-tab" type="button" data-filter="ready" aria-pressed="false">Ready</button>
+                        <button class="filter-tab" type="button" data-filter="installed" aria-pressed="false">
+                            Installed <span id="installed-count" class="tab-count">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="provider-list" class="provider-list">
+                    <div class="skeleton-list" aria-hidden="true">
+                        <div class="skeleton-row"></div>
+                        <div class="skeleton-row"></div>
+                        <div class="skeleton-row"></div>
+                        <div class="skeleton-row"></div>
+                        <div class="skeleton-row"></div>
+                        <div class="skeleton-row"></div>
+                    </div>
+                </div>
+
+                <footer id="catalog-footer" class="catalog-footer">Loading the models.dev catalog…</footer>
+            </aside>
+
+            <section id="detail" class="detail" tabindex="-1">
+                <div class="detail-loading" aria-hidden="true">
+                    <div class="skeleton-hero"></div>
+                    <div class="skeleton-line wide"></div>
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-block"></div>
+                </div>
+            </section>
+        </main>
+
+        <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="false"></div>
+        <div id="selection-status" class="sr-only" aria-live="polite"></div>
+    </div>
+
+    <dialog id="confirm-dialog" class="dialog" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+        <div class="dialog-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 9v4M12 17h.01"/>
+                <path d="M10.3 3.9 2.7 17a1.7 1.7 0 0 0 1.5 2.5h15.6a1.7 1.7 0 0 0 1.5-2.5L13.7 3.9a1.9 1.9 0 0 0-3.4 0Z"/>
+            </svg>
+        </div>
+        <h2 id="confirm-title">Confirm</h2>
+        <p id="confirm-message"></p>
+        <div class="dialog-actions">
+            <button id="confirm-cancel" class="button button-subtle" type="button">Cancel</button>
+            <button id="confirm-ok" class="button button-danger" type="button">Confirm</button>
+        </div>
+    </dialog>
+
+    <script type="module" src="./app.js"></script>
+</body>
+</html>

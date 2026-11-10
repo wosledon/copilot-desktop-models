@@ -1,0 +1,16 @@
+{
+  "name": "copilot-desktop-models",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A Copilot Desktop canvas for adding models.dev providers to Copilot.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node scripts/test.mjs",
+    "check": "node scripts/check.mjs",
+    "install:extension": "node scripts/install-extension.mjs"
+  }
+}
