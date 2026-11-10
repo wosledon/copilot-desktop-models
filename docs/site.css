@@ -414,21 +414,22 @@ tr:last-child td {
 
 .site-footer {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
     width: min(1120px, 100% - 40px);
     margin: 0 auto;
-    padding: 22px 0 40px;
+    padding: 24px 0 40px;
     color: var(--subtle);
     font-size: 13px;
+    text-align: center;
     border-top: 1px solid var(--border);
 }
 
 .site-footer nav {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
 }
 
@@ -436,7 +437,8 @@ tr:last-child td {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    gap: 10px;
 }
 
 .visit-badge {
@@ -450,18 +452,24 @@ tr:last-child td {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    padding: clamp(20px, 3vw, 28px);
-    border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+    gap: 18px 24px;
+    padding: clamp(20px, 2.6vw, 26px) clamp(20px, 3vw, 30px);
+    border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--border));
     border-radius: var(--radius);
     background:
-        radial-gradient(520px 200px at 92% -40%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
+        radial-gradient(520px 200px at 92% -40%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
         var(--panel);
     box-shadow: var(--shadow);
 }
 
+.star-copy {
+    min-width: 0;
+}
+
 .star-copy h2 {
     margin: 0 0 4px;
+    font-size: clamp(19px, 2.2vw, 23px);
+    letter-spacing: -0.02em;
 }
 
 .star-copy p {
@@ -477,9 +485,15 @@ tr:last-child td {
     gap: 12px;
 }
 
+.star-actions .btn {
+    min-height: 34px;
+    padding: 5px 14px;
+    font-size: 13px;
+}
+
 .star-badge {
     display: block;
-    height: 28px;
+    height: 24px;
     width: auto;
 }
 
